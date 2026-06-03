@@ -1,82 +1,83 @@
-# Segundo Cérebro — MSCREATIVE.SYSTEMS™
+# Memória Viva — MSCREATIVE.SYSTEMS™
 
-> Uma skill de Claude Code que te conduz a construir um segundo cérebro de IA — vivo, buscável, e que **mora dentro do seu próprio repositório GitHub**. Markdown puro. Versionado. Portável entre LLMs.
+> Uma skill de Claude Code que monta uma **memória viva** dentro do seu repositório: uma pasta de markdown que o sistema **atravessa** — destila o bruto, conecta, calibra na sua voz — pra virar artefato. Markdown puro. Versionado. Portável.
 
-Em 3 de abril de 2026, [Andrej Karpathy](https://github.com/karpathy) publicou um gist de 1.500 palavras descrevendo como montar uma wiki pessoal com uma pasta de markdown (`raw/` → `wiki/`) e um LLM. Em 48 horas, a thread no X bateu **16 milhões de views**.
+Em 3 de abril de 2026, [Andrej Karpathy](https://github.com/karpathy) publicou um gist descrevendo como montar uma wiki pessoal com uma pasta de markdown (`raw/` → `wiki/`) e um LLM. Em 48 horas, a thread no X bateu **16 milhões de views**. A ideia: o repo é a IDE, o LLM é o programador, a wiki é o código-fonte.
 
-Esta skill leva essa ideia adiante, em português, na comunidade MS CREATIVE KEYS. A diferença central: aqui o cérebro não vive num vault de Obsidian solto na sua Mesa. Vive **dentro do seu repositório GitHub pessoal** — o mesmo repo que você usa como sistema operacional criativo. Versionado, com backup, portável pra qualquer LLM. O Obsidian entra opcional, só pra visualizar o grafo.
+Esta skill leva essa ideia adiante com o método da MSCS — a **travessia**. A memória aqui não fica parada esperando consulta. Ela atravessa o bruto até virar material calibrado na sua voz, pronto pra produzir. O destino do que entra é virar artefato: post, e-mail, roteiro, proposta. Memória que trabalha.
 
 ---
 
-## O que ela faz
+## O ciclo
 
-A travessia tem três fases. Faça as três ou escolha uma.
+```
+  captura          travessia              produção
+  ───────          ─────────              ────────
+  raw/      →    destila + conecta    →   artefato
+                 + calibra na voz         na sua voz
+                       │
+                     voz.md  (cresce a cada travessia)
+```
 
-1. **O Acervo** — exporta seu histórico de ChatGPT e Claude e o destila em markdown taggeado e linkado, commitado no seu repo.
-2. **A Wiki Viva** — você larga fontes brutas em `raw/`, o Claude Code compila artigos estruturados em `wiki/`. Cresce toda vez que você alimenta.
-3. **O Batimento** — conectores MCP (Gmail, Granola, NotebookLM) + iMessage Channels + os slash commands `/hoje`, `/ideias`, `/criar`. O cérebro responde do seu celular.
+1. **Captura** — tudo que entra vai cru pra `raw/`. Conversa, ideia, transcrição, recorte.
+2. **Travessia** — o sistema destila o sinal, escreve na `wiki/` na sua voz, conecta, e reforça seu `voz.md`.
+3. **Produção** — sob demanda, produz puxando da `wiki/`, na sua voz, no formato do destino.
+
+A voz é a espinha. A cada travessia o sistema aprende como você pensa e escreve. Por isso o que ele produz soa como você.
+
+---
+
+## Os três verbos
+
+| Comando | O que faz |
+|---|---|
+| `/atravessar` | Pega o bruto novo em `raw/`, destila pra `wiki/`, conecta e atualiza `voz.md` |
+| `/lembrar [tema]` | Consulta a memória: o que você já sabe e já disse, com as conexões |
+| `/produzir [tema]` | Gera um artefato na sua voz, puxando da memória |
 
 ---
 
 ## Instalar
 
-O jeito confiável (funciona em qualquer Mac, fácil de atualizar depois):
-
 ```bash
 git clone https://github.com/1marcelserrano/mscs-segundo-cerebro.git ~/.claude/skills/mscs-segundo-cerebro
 ```
 
-Se `~/.claude/skills/mscs-segundo-cerebro` já existir, faça backup antes:
+Se a pasta já existir, faça backup antes (`mv ... .backup`). Abra o Claude Code dentro do seu repositório e diga:
 
-```bash
-mv ~/.claude/skills/mscs-segundo-cerebro ~/.claude/skills/mscs-segundo-cerebro.backup
-```
+> Monta minha memória viva.
 
-Abra o Claude Code em qualquer pasta e diga:
+Pra atualizar depois: `cd ~/.claude/skills/mscs-segundo-cerebro && git pull`.
 
-> Monta meu segundo cérebro.
-
-Pra atualizar depois:
-
-```bash
-cd ~/.claude/skills/mscs-segundo-cerebro && git pull
-```
-
-### Conferir se instalou
-
-No Claude Code, digite:
-
-```
-/skills
-```
-
-Você deve ver `mscs-segundo-cerebro` na lista. Se não aparecer, a pasta está no lugar errado — rode o clone de novo e confira o caminho de destino.
+Confira a instalação com `/skills` — deve aparecer `mscs-segundo-cerebro`.
 
 ---
 
-## O que vem no pacote
+## A estrutura
 
-| Arquivo | Função |
-|---|---|
-| `SKILL.md` | A skill que conduz a travessia das três fases |
-| `CLAUDE.md` | O compilador da wiki viva (copiado pra raiz do seu repo) |
-| `commands/hoje.md` | Slash command `/hoje` — plano do dia |
-| `commands/ideias.md` | Slash command `/ideias` — ideias de conteúdo |
-| `commands/criar.md` | Slash command `/criar` — rascunho na sua voz |
+```
+seu-repo/
+├── raw/          ← captura: tudo que entra, cru
+├── wiki/         ← memória: destilada, conectada, na sua voz
+│   ├── index.md
+│   └── log.md
+├── voz.md        ← perfil de voz que cresce a cada travessia
+└── CLAUDE.md     ← protocolo da memória viva
+```
 
 ---
 
 ## Pra quem é
 
-- **Comunidade MS CREATIVE KEYS** — este é um módulo do programa. Seu repo pessoal (montado nas Semanas 2 e 4) ganha um cérebro e um batimento.
-- **Qualquer pessoa** — funciona standalone. Você só precisa de um repositório GitHub pessoal pra abrigar o cérebro. Não exige nenhuma skill interna MSCS.
+- **Comunidade MS CREATIVE KEYS** — é um módulo do programa. Seu repo pessoal ganha uma memória que escreve na sua voz.
+- **Qualquer pessoa** — funciona standalone. Você só precisa de um repositório em markdown. Não exige nenhuma skill interna MSCS; se você tiver (`travessia`, `mscs-wiki`), a memória se integra mais fundo.
 
 ---
 
 ## Créditos
 
-- **Padrão de wiki viva:** [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
-- **Adaptação MSCS-native:** MSCREATIVE.SYSTEMS™ · MS CREATIVE KEYS
+- **Ideia de wiki viva:** [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
+- **Método da travessia e operação por verbos:** MSCREATIVE.SYSTEMS™ · MS CREATIVE KEYS
 
 ## Licença
 

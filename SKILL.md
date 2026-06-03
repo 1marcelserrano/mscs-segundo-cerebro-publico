@@ -1,258 +1,129 @@
 ---
 name: mscs-segundo-cerebro
-description: Conduz o usuário na construção de um segundo cérebro de IA que vive dentro do próprio repositório GitHub — versionado, portável e em markdown puro. Use quando alguém quiser montar um segundo cérebro, organizar o histórico de ChatGPT/Claude, montar uma wiki viva estilo Karpathy, conectar o cérebro ao celular via iMessage, ou instalar os slash commands /hoje, /ideias, /criar. Dispara em frases como "montar meu segundo cérebro", "organizar minhas conversas de IA", "wiki viva no meu repo", "exportei meu ChatGPT e agora", "segundo cérebro MSCS", "dar batimento ao meu repo". Use mesmo quando o usuário citar só uma das três fases (Acervo, Wiki Viva, Batimento).
+description: Monta e opera uma memória viva no repositório do usuário — uma pasta de markdown que um LLM atravessa (raw → wiki) e calibra na voz do dono, pra virar artefato. Use quando alguém quiser montar um segundo cérebro, uma memória viva, uma wiki viva estilo Karpathy, organizar conversas/pesquisa em markdown, calibrar um sistema na própria voz, ou instalar os comandos de travessia /atravessar, /lembrar, /produzir. Dispara em "montar minha memória viva", "segundo cérebro", "wiki viva no meu repo", "atravessar meu material bruto", "sistema que escreve na minha voz", "exportei meu ChatGPT e agora". Use mesmo que o usuário cite só uma parte (captura, travessia ou produção).
 ---
 
-# Segundo Cérebro — MSCREATIVE.SYSTEMS™
+# Memória Viva — MSCREATIVE.SYSTEMS™
 
-Esta skill conduz o usuário a transformar anos de conversas com IA, pesquisa bruta e inputs diários num **sistema vivo** que ele consulta — e que cresce sozinho conforme ele alimenta.
+Andrej Karpathy mostrou uma coisa simples e forte: uma pasta de markdown mais um LLM viram uma wiki viva. Você joga material numa pasta, o LLM organiza, conecta e mantém. O repo é a IDE, o LLM é o programador, a wiki é o código-fonte.
 
-A diferença em relação a outros guias de "segundo cérebro": aqui o cérebro **mora dentro do repositório GitHub pessoal** do usuário, em markdown puro. Versionado. Portável entre LLMs. Sem depender de Obsidian, de app pago, ou de plataforma que pode fechar amanhã. O Obsidian entra opcional, só pra visualizar o grafo.
+Esta skill leva essa ideia adiante com o método da MSCS: a **travessia**. A memória aqui não fica parada esperando você consultar. Ela atravessa o bruto — tira o sinal, conecta com o que já existe, e calibra tudo na sua voz. O destino do que entra é virar artefato: post, e-mail, roteiro, proposta. Memória que trabalha.
 
-Se o usuário é aluno do MSCREATIVE KEYS, esse repo já existe (foi montado na Semana 2 e organizado na Semana 4). Esta skill dá a ele um cérebro e um batimento.
+## O ciclo
 
-## A travessia tem três fases
+Três movimentos, em loop:
 
-O usuário pode fazer as três ou escolher uma. Confirme no começo qual ele quer.
+1. **Captura** — tudo que entra vai cru pra `raw/`. Conversa com IA, ideia solta, transcrição, recorte, nota de reunião. Sem organizar. Só capturar.
+2. **Travessia** — o sistema atravessa o que está em `raw/`: destila o sinal, escreve na `wiki/` na sua voz, conecta com wikilinks ao que já existe, e reforça seu perfil de voz. Bruto vira memória.
+3. **Produção** — sob demanda, o sistema produz puxando da `wiki/`, na sua voz, no formato do destino.
 
-1. **O Acervo** — exportar o histórico de ChatGPT e Claude e destilá-lo em markdown taggeado e linkado, em `raw/historico-ia/` no repo pessoal.
-2. **A Wiki Viva** — uma base de conhecimento que cresce sozinha: o usuário joga fontes brutas em `raw/`, o Claude Code compila artigos estruturados em `wiki/`.
-3. **O Batimento** — conectores MCP, iMessage Channels e os slash commands `/hoje`, `/ideias`, `/criar`. O cérebro passa a responder do celular.
+A voz é a espinha. A cada travessia, o sistema aprende mais sobre como você pensa e escreve, e grava isso em `voz.md`. Por isso o que ele produz soa como você, não como um LLM genérico.
+
+A estrutura, em nomes do Karpathy:
+
+```
+seu-repo/
+├── raw/          ← captura: tudo que entra, cru
+├── wiki/         ← memória: destilada, conectada, na sua voz
+│   ├── index.md  ← porta de entrada da memória
+│   └── log.md    ← diário das travessias
+├── voz.md        ← perfil de voz que cresce a cada travessia
+└── CLAUDE.md     ← protocolo da memória viva
+```
 
 ## Como conduzir
 
-O usuário pode ser leigo total. Pode estar abrindo o Terminal pela primeira vez. Fale em português claro. Nunca presuma familiaridade com linha de comando. Explique o que cada comando faz **antes** de rodar.
+O usuário pode ser leigo. Pode estar abrindo o Terminal pela primeira vez. Fale em português claro. Explique o que cada comando faz antes de rodar. Em cada passo, diga de quem é a bola: o que o Claude Code faz e o que só o usuário faz. Quando a vez for do usuário, pare e espere.
 
-Em cada fase há coisas que o Claude Code faz (criar pastas, baixar arquivos, escrever a wiki) e coisas que só o usuário faz (pedir a exportação na OpenAI, dar permissão no macOS, logar num navegador). Diga sempre de quem é a bola. Quando a vez for do usuário, **pare e espere**.
+Voz: frases curtas, voz ativa, zero floreio. Sem "game-changer", "transformador", "alavancar". Sem "vale notar que".
 
-Se ele disser "pula a fase 1, já fiz" ou "só quero a fase 3", respeite. Confirme o que já existe e entre direto.
+## Montagem
 
-Regra de voz: frases curtas, voz ativa, zero floreio. Sem "game-changer", "transformador", "turbinar", "alavancar". Sem "Não é X, é Y". Sem "vale notar que".
+### Pré-requisito
 
-## Fase 0: Checagem inicial
+Um repositório pessoal em markdown. Se o usuário é aluno do MSCREATIVE KEYS, esse repo já existe (montado na Semana 2, organizado na Semana 4) — a memória viva entra dentro dele. Se não tem repo ainda, ofereça montar: pasta local + `git init` + repo no GitHub. Use nome sem espaços.
 
-Antes de tocar em qualquer coisa, confirme o que o usuário tem:
+### Criar as camadas (o Claude Code faz)
 
-> Antes de começar, uma checagem rápida. Você tem:
-> 1. **Claude Code** instalado e funcionando? (se está falando comigo, tem)
-> 2. **Um repositório GitHub pessoal** já criado? (onde o cérebro vai morar)
-> 3. Alguma **exportação de dados do ChatGPT ou Claude** já pedida? (a da OpenAI demora 1 a 3 dias, então talvez a gente comece agora e volte)
-
-Se o usuário **não tem repo pessoal ainda**, esse é o pré-requisito. Ofereça montar um do zero: uma pasta local + `git init` + um repo privado no GitHub. Estrutura mínima:
-
-```
-meu-cerebro/
-├── README.md
-├── .gitignore
-├── about-me.md          ← quem é o usuário (pra IA ler)
-├── raw/                 ← fontes brutas (inclui raw/historico-ia/ da Fase 1)
-└── wiki/                ← conhecimento compilado e vivo (Fase 2)
-```
-
-Use um nome de pasta **sem espaços** (`meu-cerebro`, não `meu cerebro`). Espaço no caminho quebra o tratamento de arquivos.
-
-Confirme onde o cérebro vai viver. Padrão: a raiz do repo pessoal do usuário. Se ele não tem preferência, use `~/Documents/repos/meu-cerebro`.
-
-## Fase 1: O Acervo
-
-A meta: virar anos de conversa com IA em markdown taggeado, linkado e buscável, **commitado no repo**.
-
-### 1a. Pedir as exportações (o usuário faz)
-
-Isto é só do usuário. Conduza pelos dois:
-
-**ChatGPT** (faça PRIMEIRO — demora até 3 dias):
-> Vá em chatgpt.com → ícone do seu perfil (canto superior direito) → Settings → Data Controls → "Export data". A OpenAI manda um link por e-mail. Me avise quando tiver pedido.
-
-**Claude** (chega em ~5 minutos):
-> Vá em claude.ai → ícone do perfil (canto inferior esquerdo) → Settings → Privacy → "Export Data". O e-mail chega em uns 5 minutos. Me avise quando tiver baixado e descompactado os dois ZIPs.
-
-Espere o usuário confirmar. Se ele disser "a do ChatGPT vai demorar dias, o que faço enquanto isso" — sugira ir pra Fase 2 (Wiki Viva), que não depende das exportações.
-
-### 1b. Trazer os arquivos pro repo (o Claude Code faz)
-
-Quando o usuário tiver os dois ZIPs descompactados, crie a pasta do histórico dentro de `raw/`:
+Na raiz do repo:
 
 ```bash
-mkdir -p ~/Documents/repos/meu-cerebro/raw/historico-ia
+mkdir -p raw wiki
 ```
 
-Peça pro usuário arrastar as duas pastas descompactadas pra dentro de `raw/historico-ia/`. Depois confirme:
+Crie `voz.md` com um esqueleto curto (como o usuário escreve, o que evita, referências de tom). Se o repo já tem `writing-style.md` ou `voice_profile` (aluno MSCS tem), aponte `voz.md` pra ele em vez de duplicar.
+
+Copie o protocolo da memória pra raiz:
 
 ```bash
-ls ~/Documents/repos/meu-cerebro/raw/historico-ia
+cp ~/.claude/skills/mscs-segundo-cerebro/CLAUDE.md ./CLAUDE.md
 ```
 
-### 1c. Destilar tudo (o Claude Code faz — aqui mora a mágica)
+Se o repo já tem um `CLAUDE.md`, não sobrescreva. Acrescente a seção da memória viva ao final, preservando o que já existe.
 
-Abra uma sessão de Claude Code apontada pra pasta do repo. Oriente o usuário:
+### Semear a memória (opcional)
 
-> Abra uma janela nova de Terminal (Cmd+Espaço, digite Terminal, Enter). Cole:
-> ```
-> cd ~/Documents/repos/meu-cerebro
-> claude
-> ```
-> Com o Claude Code rodando ali, cole este prompt:
-> ```
-> Organize a pasta raw/historico-ia/ deste repositório. Converta todas as
-> minhas conversas de ChatGPT e Claude em arquivos markdown individuais, cada
-> um com frontmatter (titulo, data, tags, categoria). Depois rode sub-agentes
-> em paralelo pra ler cada conversa e taggear com inteligência: nomes,
-> pessoas, lugares, temas recorrentes, projetos e tópicos. Conecte tudo com
-> wikilinks pra que conversas relacionadas se liguem. No fim, escreva um
-> raw/historico-ia/index.md listando cada arquivo com uma linha de descrição.
-> ```
+Pra começar com lastro em vez de pasta vazia, o usuário pode semear `raw/` com o histórico de IA dele.
 
-Isso roda alguns minutos. Quando terminar, oriente:
-> Commite tudo: `git add raw/ && git commit -m "Acervo destilado em raw/historico-ia" && git push`. Agora seu histórico de IA é versionado e buscável.
+> Exporte seu histórico: em chatgpt.com (Settings → Data Controls → Export data, demora até 3 dias) e em claude.ai (Settings → Privacy → Export Data, chega em minutos). Descompacte e arraste pra `raw/historico-ia/`.
 
-**Opcional — grafo no Obsidian.** Se o usuário quiser ver as conexões visualmente:
-> Baixe o Obsidian (grátis, em obsidian.md). Abra → "Open folder as vault" → selecione a pasta do seu repo. Cmd+G abre o grafo. Cada conversa é um nó linkado. Dá uma passeada.
+Depois é só atravessar (próxima seção). O histórico passa pela mesma travessia que qualquer outro bruto.
 
-## Fase 2: A Wiki Viva
+## Os três verbos
 
-O Acervo organiza o passado. A Wiki Viva é conhecimento que **cresce** toda vez que o usuário joga material novo. Ele larga fontes brutas em `raw/`, o Claude Code compila artigos estruturados em `wiki/`.
-
-A imagem do Karpathy vale citar pro usuário: *"O Obsidian é a IDE. O LLM é o programador. A wiki é o código-fonte."* Aqui troque "Obsidian" por "seu repo".
-
-### 2a. Criar a estrutura (o Claude Code faz)
-
-No mesmo repo, crie as duas pastas e baixe o arquivo de instruções da wiki:
+A memória viva se opera por três comandos. Esta skill traz os três prontos em `commands/`. Copie pro repo do usuário:
 
 ```bash
-mkdir -p ~/Documents/repos/meu-cerebro/raw ~/Documents/repos/meu-cerebro/wiki
+mkdir -p .claude/commands
+cp ~/.claude/skills/mscs-segundo-cerebro/commands/*.md ./.claude/commands/
 ```
 
-O compilador da wiki é um `CLAUDE.md` na raiz do repo. Esta skill traz uma versão em português, na voz MSCS, no arquivo `CLAUDE.md` deste repositório de skill. Copie esse arquivo pra raiz do repo do usuário:
+- **`/atravessar`** — o verbo central. Pega o que está em `raw/` ainda não processado, destila pra `wiki/`, conecta, e atualiza `voz.md`. É a travessia: bruto vira memória.
+- **`/lembrar [tema]`** — consulta a memória. O que você já sabe e já disse sobre um tema, com as conexões. Responde da `wiki/` primeiro; se não cobre, aponta o que falta atravessar.
+- **`/produzir [tema]`** — gera um artefato na sua voz, puxando da `wiki/` e do `voz.md`. Marca onde a memória ainda é rasa.
 
-```bash
-cp ~/.claude/skills/mscs-segundo-cerebro/CLAUDE.md ~/Documents/repos/meu-cerebro/CLAUDE.md
-```
+O fluxo do dia a dia: você captura em `raw/` quando algo aparece. Roda `/atravessar` quando quiser que entre na memória. Roda `/lembrar` antes de começar algo. Roda `/produzir` quando for criar.
 
-Se o repo do usuário **já tem** um `CLAUDE.md` (aluno MSCS tem), não sobrescreva. Em vez disso, acrescente a seção de protocolo da wiki ao final do `CLAUDE.md` existente. Leia os dois, funda com cuidado, preserve o que já estava lá.
+## A voz que cresce
 
-### 2b. Colocar fontes no `raw/` (o usuário lidera)
+`voz.md` é o que separa esta memória de um arquivo morto. Toda travessia que revela algo sobre como o usuário pensa ou escreve volta pra lá. Com o tempo, `voz.md` vira um retrato fiel — e o `/produzir` soa como o dono, não como um modelo.
 
-Dois caminhos — deixe o usuário escolher.
+Oriente o usuário a revisar `voz.md` de vez em quando: cortar o que não é mais verdade, reforçar o que é. A voz também atravessa.
 
-**Opção A: arrastar e soltar.** Oriente:
-> Abra a pasta `raw/` no Finder. Jogue 5 a 10 fontes de um mesmo tema pra começar — PDFs, artigos salvos, transcrições, notas. Me avise quando terminar.
+## Manutenção
 
-**Opção B: puxar do NotebookLM.** Requer a skill do NotebookLM. Se o usuário quiser, instale pra ele e conduza o login (mesmo fluxo da Fase 3, conectores). Depois peça a URL do notebook e rode:
-> Puxe todas as fontes deste notebook do NotebookLM e salve como arquivos em raw/: [usuário cola a URL]
+A cada uma ou duas semanas, peça uma checagem de saúde da memória:
 
-### 2c. Compilar a wiki (o Claude Code faz)
+> Revise a wiki: páginas que se contradizem, páginas órfãs (sem conexão), conceitos citados em vários lugares que ainda não têm página própria, páginas inchadas que pedem divisão. Proponha os ajustes, não execute ainda.
 
-Com as fontes em `raw/`, rode:
+E termine toda travessia importante com `git add`, `commit`, `push`. A memória só fica segura quando vai pro GitHub.
 
-> Processe cada fonte em raw/ usando as instruções de wiki do CLAUDE.md
-> na raiz. Pra cada fonte, escreva uma página de resumo em wiki/, crie ou
-> atualize as páginas de tópico e conceito relevantes, adicione wikilinks
-> entre páginas relacionadas, e mantenha um wiki/index.md com cada página
-> e uma linha de descrição.
+## Integração com o sistema MSCS
 
-Quando terminar, oriente o commit: `git add raw/ wiki/ CLAUDE.md && git commit -m "Wiki viva — primeira compilação" && git push`.
+Se o usuário tem o ecossistema MSCS, a memória viva se encaixa como substrato:
 
-### 2d. Iterar (contínuo)
+- A skill **`travessia`** é o motor profundo de destilação e calibração de voz. Quando instalada, use-a dentro do `/atravessar` pra destilar e calibrar com mais profundidade.
+- A skill **`mscs-wiki`** mantém conhecimento persistente por projeto. A memória viva alimenta e é alimentada por ela.
+- Skills de produção (supercopy e afins) puxam da `wiki/` e do `voz.md` como fonte.
 
-Oriente o usuário sobre o ritmo:
-> A wiki não nasce perfeita. Mande o Claude Code ajustar: "divide esta página", "junta estas duas", "detalha mais aqui". A cada uma ou duas semanas, peça uma checagem de saúde: "verifique a wiki: contradições, páginas órfãs, conceitos faltando". Sempre commite depois.
+A skill funciona sozinha, sem nada disso. A integração é bônus pra quem é MSCS.
 
-> **Aluno MSCS:** se você tem a skill `travessia` instalada, ela é o motor natural pra atravessar o que está em `raw/` até virar artefato na sua voz. Use `travessia` pra destilar e calibrar, depois deixe o compilador da wiki organizar e linkar.
+## Extensão opcional: memória no celular
 
-## Fase 3: O Batimento
+Quem quiser falar com a memória pelo telefone pode ligar o iMessage Channels do Claude Code (`claude --channels plugin:imessage@claude-plugins-official`) e os conectores MCP (Gmail, Granola). Aí `/lembrar` e `/produzir` respondem por mensagem. É extensão, não o centro — o centro é a travessia.
 
-Esta fase dá pulso à wiki. O usuário passa a conversar com o cérebro pelo celular. Três sub-passos.
+## O que costuma travar
 
-### 3a. Conectores MCP
-
-Três valem ligar primeiro:
-- **Gmail** — artigos encaminhados, links de pesquisa, threads de e-mail
-- **Granola** — transcrições de reunião, decisões, próximos passos
-- **NotebookLM** — pra puxar notebooks existentes
-
-Pra cada um que o usuário quiser, diga ao Claude Code:
-> Conecte ao meu [Gmail / Granola / NotebookLM] pra puxar conteúdo novo pra wiki.
-
-O NotebookLM exige um login no navegador **fora do Claude Code**. Conduza:
-1. No Claude Code: `Instale a skill do NotebookLM pra eu puxar fontes dos meus notebooks.`
-2. Depois de instalar, oriente:
-   > Abra uma janela NOVA de Terminal (não rode dentro do Claude Code). Digite:
-   > ```
-   > notebooklm login
-   > ```
-   > Um navegador abre. Logue na conta Google, espere o NotebookLM carregar inteiro, volte ao Terminal e aperte Enter. Feche essa janela. Pronto.
-
-### 3b. iMessage Channels
-
-Aqui o cérebro ganha celular. O usuário monta um serviço no Mac que escuta iMessages enviados pro próprio número, processa contra a wiki e responde na mesma conversa.
-
-Conduza:
-> No Terminal, rode:
-> ```
-> claude --channels plugin:imessage@claude-plugins-official
-> ```
-
-O Claude Code vai pedir duas permissões do macOS. As duas são só do usuário:
-
-**1. Acesso total ao disco pro Terminal.**
-> O macOS vai pedir, ou você faz manual: Ajustes do Sistema → Privacidade e Segurança → Acesso Total ao Disco → ative o Terminal. Isso deixa o Claude Code ler os iMessages que chegam.
-
-**2. Permissão de automação pro Mensagens.**
-> Na primeira vez que o Claude Code tentar responder, o macOS pergunta se o Terminal pode controlar o Mensagens. Clique em **Permitir**.
-
-Com as duas concedidas, teste:
-> No celular, abra o iMessage e **mande uma mensagem pro seu próprio número**. Em segundos, o Claude Code detecta, processa contra a wiki e responde na mesma conversa.
-
-Aviso pro usuário: se ele fechar o Claude Code no Mac, o Channels para de escutar. `claude --resume` retoma. Vale avisar antes pra ele não achar que quebrou.
-
-### 3c. Os slash commands (o Claude Code faz)
-
-Três comandos pra começar. Esta skill traz os três prontos na pasta `commands/`. Copie pro repo do usuário:
-
-```bash
-mkdir -p ~/Documents/repos/meu-cerebro/.claude/commands
-cp ~/.claude/skills/mscs-segundo-cerebro/commands/*.md ~/Documents/repos/meu-cerebro/.claude/commands/
-```
-
-Ou scaffolde na hora, com os prompts abaixo. Em todos, peça pro usuário aprovar a escrita do arquivo.
-
-**`/hoje`** — plano do dia (precisa de Gmail + Google Calendar + wiki):
-> Crie um slash command chamado /hoje que lê meu Google Calendar do dia, checa o Gmail por algo urgente, e cruza os dois com a minha wiki pra puxar contexto sobre as pessoas e projetos envolvidos. Me dê um plano priorizado do dia. Salve como arquivo pra eu rodar /hoje quando quiser.
-
-**`/ideias`** — ideias de conteúdo (precisa de Granola + Gmail + wiki):
-> Crie um slash command chamado /ideias que lê minhas transcrições recentes do Granola, threads do Gmail e páginas da wiki, acha padrões e temas emergentes, e gera ideias de conteúdo pra criar, tópicos pra escrever e oportunidades que estou deixando passar. Salve como arquivo.
-
-**`/criar`** — rascunho de conteúdo na voz do usuário (precisa da wiki + about-me):
-> Crie um slash command chamado /criar que recebe um tema ou ideia, puxa o contexto relevante da minha wiki, lê meu about-me.md pra capturar minha voz, e produz uma peça pronta. Posts, rascunho de newsletter, roteiro de vídeo, esboço de carrossel. Salve como arquivo.
-
-Depois de salvos, os comandos funcionam do celular também. Mandar `/hoje` pro próprio número no iMessage devolve o briefing do dia.
-
-## Fechamento
-
-Depois das três fases, diga ao usuário o que ele tem agora:
-- Todo o histórico de IA, taggeado e linkado, versionado no repo
-- Uma wiki que cresce toda vez que ele larga uma fonte nova
-- Acesso pelo celular via iMessage
-- Três comandos que puxam o dia, levantam ideias e rascunham na voz dele
-
-Sugira o próximo gesto: largar uma fonte nova em `raw/`, depois mandar `/criar [tema dessa fonte]` pra si mesmo e sentir o ciclo fechar.
-
-Se travou em algum passo, debug aquele ponto específico em vez de recomeçar do zero.
-
-## O que costuma dar errado
-
-- **Nome de pasta com espaço** ("meu cerebro" em vez de "meu-cerebro") — o tratamento de caminho quebra. Sempre uma palavra só, ou com hífen.
-- **Rodar `claude` sem `cd` antes** — o Claude Code lê da pasta onde o terminal está. Sem o `cd`, os sub-agentes não veem os arquivos. Reconfirme o diretório antes de qualquer passo de organizar/processar.
-- **Login do NotebookLM dentro do Claude Code** — tem que ser uma janela separada de Terminal. Senão o navegador não entrega o login.
-- **Channels para depois do Mac dormir / Claude Code fechar** — `claude --resume` retoma. Avise antes.
-- **Acesso Total ao Disco não apareceu** — às vezes o macOS precisa reiniciar o Terminal depois de conceder. Saia do Terminal de vez (Cmd+Q) e reabra.
-- **Esquecer de commitar** — o cérebro só fica seguro quando vai pro GitHub. Termine cada fase com `git add`, `commit`, `push`.
+- **Nome de pasta com espaço** — quebra o tratamento de caminho. Uma palavra só, ou com hífen.
+- **Rodar `claude` sem `cd` no repo** — o Claude Code lê da pasta onde o terminal está. Sem o `cd`, não vê `raw/`.
+- **Atravessar sem voz** — se `voz.md` está vazio, a wiki sai genérica. Preencha um esqueleto antes da primeira travessia.
+- **Capturar e nunca atravessar** — `raw/` vira depósito. A memória só cresce quando você roda `/atravessar`.
+- **Esquecer de commitar** — a memória só fica segura no GitHub. Feche cada travessia com `git push`.
 
 ---
 
-> Baseado no padrão de wiki viva de [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): uma pasta de markdown (`raw/` → `wiki/`) que um LLM compila e mantém viva.
+> Construído sobre a ideia de wiki viva de [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): uma pasta de markdown (`raw/` → `wiki/`) que um LLM compila e mantém viva.
 >
-> Esta versão move o cérebro pra dentro do repositório GitHub pessoal — versionado e portável — e calibra a condução na voz MSCREATIVE.SYSTEMS™.
+> O método da travessia — captura → destilação → calibração na voz → produção — e a operação por verbos são da MSCREATIVE.SYSTEMS™.
 >
 > MSCREATIVE.SYSTEMS™ · MS CREATIVE KEYS
