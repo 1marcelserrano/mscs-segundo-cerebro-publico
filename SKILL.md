@@ -16,7 +16,7 @@ Se o usuário é aluno do MSCREATIVE KEYS, esse repo já existe (foi montado na 
 O usuário pode fazer as três ou escolher uma. Confirme no começo qual ele quer.
 
 1. **O Acervo** — exportar o histórico de ChatGPT e Claude e destilá-lo em markdown taggeado e linkado, dentro do repo pessoal.
-2. **A Wiki Viva** — uma base de conhecimento que cresce sozinha: o usuário joga fontes brutas em `bruto/`, o Claude Code compila artigos estruturados em `wiki/`.
+2. **A Wiki Viva** — uma base de conhecimento que cresce sozinha: o usuário joga fontes brutas em `raw/`, o Claude Code compila artigos estruturados em `wiki/`.
 3. **O Batimento** — conectores MCP, iMessage Channels e os slash commands `/hoje`, `/ideias`, `/criar`. O cérebro passa a responder do celular.
 
 ## Como conduzir
@@ -46,7 +46,7 @@ meu-cerebro/
 ├── .gitignore
 ├── about-me.md          ← quem é o usuário (pra IA ler)
 ├── acervo/              ← Fase 1: histórico de IA destilado
-├── bruto/               ← Fase 2: fontes que ainda não viraram wiki
+├── raw/                ← Fase 2: fontes que ainda não viraram wiki
 └── wiki/                ← Fase 2: conhecimento compilado e vivo
 ```
 
@@ -101,7 +101,7 @@ Abra uma sessão de Claude Code apontada pra pasta do repo. Oriente o usuário:
 > em paralelo pra ler cada conversa e taggear com inteligência: nomes,
 > pessoas, lugares, temas recorrentes, projetos e tópicos. Conecte tudo com
 > wikilinks pra que conversas relacionadas se liguem. No fim, escreva um
-> acervo/INDICE.md listando cada arquivo com uma linha de descrição.
+> acervo/index.md listando cada arquivo com uma linha de descrição.
 > ```
 
 Isso roda alguns minutos. Quando terminar, oriente:
@@ -112,7 +112,7 @@ Isso roda alguns minutos. Quando terminar, oriente:
 
 ## Fase 2: A Wiki Viva
 
-O Acervo organiza o passado. A Wiki Viva é conhecimento que **cresce** toda vez que o usuário joga material novo. Ele larga fontes brutas em `bruto/`, o Claude Code compila artigos estruturados em `wiki/`.
+O Acervo organiza o passado. A Wiki Viva é conhecimento que **cresce** toda vez que o usuário joga material novo. Ele larga fontes brutas em `raw/`, o Claude Code compila artigos estruturados em `wiki/`.
 
 A imagem do Karpathy vale citar pro usuário: *"O Obsidian é a IDE. O LLM é o programador. A wiki é o código-fonte."* Aqui troque "Obsidian" por "seu repo".
 
@@ -121,7 +121,7 @@ A imagem do Karpathy vale citar pro usuário: *"O Obsidian é a IDE. O LLM é o 
 No mesmo repo, crie as duas pastas e baixe o arquivo de instruções da wiki:
 
 ```bash
-mkdir -p ~/Documents/repos/meu-cerebro/bruto ~/Documents/repos/meu-cerebro/wiki
+mkdir -p ~/Documents/repos/meu-cerebro/raw ~/Documents/repos/meu-cerebro/wiki
 ```
 
 O compilador da wiki é um `CLAUDE.md` na raiz do repo. Esta skill traz uma versão em português, na voz MSCS, no arquivo `CLAUDE.md` deste repositório de skill. Copie esse arquivo pra raiz do repo do usuário:
@@ -132,34 +132,34 @@ cp ~/.claude/skills/mscs-segundo-cerebro/CLAUDE.md ~/Documents/repos/meu-cerebro
 
 Se o repo do usuário **já tem** um `CLAUDE.md` (aluno MSCS tem), não sobrescreva. Em vez disso, acrescente a seção de protocolo da wiki ao final do `CLAUDE.md` existente. Leia os dois, funda com cuidado, preserve o que já estava lá.
 
-### 2b. Colocar fontes no `bruto/` (o usuário lidera)
+### 2b. Colocar fontes no `raw/` (o usuário lidera)
 
 Dois caminhos — deixe o usuário escolher.
 
 **Opção A: arrastar e soltar.** Oriente:
-> Abra a pasta `bruto/` no Finder. Jogue 5 a 10 fontes de um mesmo tema pra começar — PDFs, artigos salvos, transcrições, notas. Me avise quando terminar.
+> Abra a pasta `raw/` no Finder. Jogue 5 a 10 fontes de um mesmo tema pra começar — PDFs, artigos salvos, transcrições, notas. Me avise quando terminar.
 
 **Opção B: puxar do NotebookLM.** Requer a skill do NotebookLM. Se o usuário quiser, instale pra ele e conduza o login (mesmo fluxo da Fase 3, conectores). Depois peça a URL do notebook e rode:
-> Puxe todas as fontes deste notebook do NotebookLM e salve como arquivos em bruto/: [usuário cola a URL]
+> Puxe todas as fontes deste notebook do NotebookLM e salve como arquivos em raw/: [usuário cola a URL]
 
 ### 2c. Compilar a wiki (o Claude Code faz)
 
-Com as fontes em `bruto/`, rode:
+Com as fontes em `raw/`, rode:
 
-> Processe cada fonte em bruto/ usando as instruções de wiki do CLAUDE.md
+> Processe cada fonte em raw/ usando as instruções de wiki do CLAUDE.md
 > na raiz. Pra cada fonte, escreva uma página de resumo em wiki/, crie ou
 > atualize as páginas de tópico e conceito relevantes, adicione wikilinks
-> entre páginas relacionadas, e mantenha um wiki/INDICE.md com cada página
+> entre páginas relacionadas, e mantenha um wiki/index.md com cada página
 > e uma linha de descrição.
 
-Quando terminar, oriente o commit: `git add bruto/ wiki/ CLAUDE.md && git commit -m "Wiki viva — primeira compilação" && git push`.
+Quando terminar, oriente o commit: `git add raw/ wiki/ CLAUDE.md && git commit -m "Wiki viva — primeira compilação" && git push`.
 
 ### 2d. Iterar (contínuo)
 
 Oriente o usuário sobre o ritmo:
 > A wiki não nasce perfeita. Mande o Claude Code ajustar: "divide esta página", "junta estas duas", "detalha mais aqui". A cada uma ou duas semanas, peça uma checagem de saúde: "verifique a wiki: contradições, páginas órfãs, conceitos faltando". Sempre commite depois.
 
-> **Aluno MSCS:** se você tem a skill `travessia` instalada, ela é o motor natural pra atravessar o que está em `bruto/` até virar artefato na sua voz. Use `travessia` pra destilar e calibrar, depois deixe o compilador da wiki organizar e linkar.
+> **Aluno MSCS:** se você tem a skill `travessia` instalada, ela é o motor natural pra atravessar o que está em `raw/` até virar artefato na sua voz. Use `travessia` pra destilar e calibrar, depois deixe o compilador da wiki organizar e linkar.
 
 ## Fase 3: O Batimento
 
@@ -237,7 +237,7 @@ Depois das três fases, diga ao usuário o que ele tem agora:
 - Acesso pelo celular via iMessage
 - Três comandos que puxam o dia, levantam ideias e rascunham na voz dele
 
-Sugira o próximo gesto: largar uma fonte nova em `bruto/`, depois mandar `/criar [tema dessa fonte]` pra si mesmo e sentir o ciclo fechar.
+Sugira o próximo gesto: largar uma fonte nova em `raw/`, depois mandar `/criar [tema dessa fonte]` pra si mesmo e sentir o ciclo fechar.
 
 Se travou em algum passo, debug aquele ponto específico em vez de recomeçar do zero.
 
@@ -252,7 +252,7 @@ Se travou em algum passo, debug aquele ponto específico em vez de recomeçar do
 
 ---
 
-> Adaptação MSCS-native do **AI Second Brain** de [Charlie Hills](https://github.com/charlie947/ai-second-brain) (MarTech AI), que por sua vez empacota a ideia de wiki viva de [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), o organizador de histórico de IA de Alex Freedman e o fluxo de slash commands de Greg Isenberg.
+> Baseado no padrão de wiki viva de [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): uma pasta de markdown (`raw/` → `wiki/`) que um LLM compila e mantém viva.
 >
 > Esta versão move o cérebro pra dentro do repositório GitHub pessoal — versionado e portável — e calibra a condução na voz MSCREATIVE.SYSTEMS™.
 >

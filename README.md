@@ -2,11 +2,9 @@
 
 > Uma skill de Claude Code que te conduz a construir um segundo cérebro de IA — vivo, buscável, e que **mora dentro do seu próprio repositório GitHub**. Markdown puro. Versionado. Portável entre LLMs.
 
-Em 3 de abril de 2026, [Andrej Karpathy](https://github.com/karpathy) publicou um gist de 1.500 palavras descrevendo como montar uma wiki pessoal com uma pasta de markdown e um LLM. Em 48 horas, a thread no X bateu **16 milhões de views**.
+Em 3 de abril de 2026, [Andrej Karpathy](https://github.com/karpathy) publicou um gist de 1.500 palavras descrevendo como montar uma wiki pessoal com uma pasta de markdown (`raw/` → `wiki/`) e um LLM. Em 48 horas, a thread no X bateu **16 milhões de views**.
 
-[Charlie Hills](https://github.com/charlie947/ai-second-brain) empacotou essa ideia — somada ao organizador de histórico de IA de Alex Freedman e ao fluxo de slash commands de Greg Isenberg — numa skill de Claude Code para leitores não-técnicos da [MarTech AI](https://charliehills.substack.com).
-
-Esta é a **adaptação MSCS-native**, em português, da comunidade MS CREATIVE KEYS. A diferença central: aqui o cérebro não vive num vault de Obsidian solto na sua Mesa. Vive **dentro do seu repositório GitHub pessoal** — o mesmo repo que você usa como sistema operacional criativo. Versionado, com backup, portável pra qualquer LLM. O Obsidian entra opcional, só pra visualizar o grafo.
+Esta skill leva essa ideia adiante, em português, na comunidade MS CREATIVE KEYS. A diferença central: aqui o cérebro não vive num vault de Obsidian solto na sua Mesa. Vive **dentro do seu repositório GitHub pessoal** — o mesmo repo que você usa como sistema operacional criativo. Versionado, com backup, portável pra qualquer LLM. O Obsidian entra opcional, só pra visualizar o grafo.
 
 ---
 
@@ -15,7 +13,7 @@ Esta é a **adaptação MSCS-native**, em português, da comunidade MS CREATIVE 
 A travessia tem três fases. Faça as três ou escolha uma.
 
 1. **O Acervo** — exporta seu histórico de ChatGPT e Claude e o destila em markdown taggeado e linkado, commitado no seu repo.
-2. **A Wiki Viva** — você larga fontes brutas em `bruto/`, o Claude Code compila artigos estruturados em `wiki/`. Cresce toda vez que você alimenta.
+2. **A Wiki Viva** — você larga fontes brutas em `raw/`, o Claude Code compila artigos estruturados em `wiki/`. Cresce toda vez que você alimenta.
 3. **O Batimento** — conectores MCP (Gmail, Granola, NotebookLM) + iMessage Channels + os slash commands `/hoje`, `/ideias`, `/criar`. O cérebro responde do seu celular.
 
 ---
@@ -78,9 +76,6 @@ Você deve ver `mscs-segundo-cerebro` na lista. Se não aparecer, a pasta está 
 ## Créditos
 
 - **Padrão de wiki viva:** [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
-- **Skill original AI Second Brain:** [Charlie Hills / MarTech AI](https://github.com/charlie947/ai-second-brain)
-- **Organização de histórico de IA:** Alex Freedman
-- **Fluxo de slash commands:** Greg Isenberg
 - **Adaptação MSCS-native:** MSCREATIVE.SYSTEMS™ · MS CREATIVE KEYS
 
 ## Licença

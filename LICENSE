@@ -2,10 +2,8 @@ MIT License
 
 Copyright (c) 2026 Marcel Serrano / MSCREATIVE.SYSTEMS™
 
-Adaptado de "AI Second Brain" de Charlie Hills (https://github.com/charlie947/ai-second-brain),
-que empacota o padrão de wiki viva de Andrej Karpathy
-(https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f),
-a organização de histórico de IA de Alex Freedman, e o fluxo de slash commands de Greg Isenberg.
+Baseado no padrão de wiki viva de Andrej Karpathy
+(https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
