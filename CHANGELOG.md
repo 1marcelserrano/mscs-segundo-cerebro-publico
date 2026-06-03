@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.1.0 — 2026-06-03
+
+Metáfora de estúdio. O verbo central muda e a lógica-mãe vira mixagem.
+
+- Verbo `/atravessar` → **`/mixar`** (liga as fontes + destila + calibra na voz). Aceita `[tema]` pra mixar só um recorte.
+- Ciclo: captura → **mixagem** → produção (antes: travessia). `voz.md` vira a "assinatura".
+- SKILL, README e CLAUDE.md reescritos na lógica de estúdio: samples (`raw/`) → mixagem → faixa (artefato).
+- `/lembrar` e `/produzir` mantidos.
+
 ## v2.0.0 — 2026-06-03
 
 Reinvenção como **memória viva**. Deixa de ser uma localização do fluxo de segundo cérebro e passa a ser uma adaptação própria da MSCS sobre a ideia do Karpathy.

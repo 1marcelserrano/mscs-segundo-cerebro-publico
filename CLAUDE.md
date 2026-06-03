@@ -1,20 +1,20 @@
 # Protocolo da Memória Viva
 
-Este arquivo instrui o Claude Code a manter a memória deste repositório. A base é a ideia de wiki viva do Andrej Karpathy. O método é a travessia da MSCREATIVE.SYSTEMS™.
+Este arquivo instrui o Claude Code a manter a memória deste repositório. A base é a ideia de wiki viva do Andrej Karpathy. A lógica é de estúdio: a mixagem da MSCREATIVE.SYSTEMS™.
 
-Karpathy: o repo é a IDE, o LLM é o programador, a wiki é o código-fonte. A travessia é o que mantém a wiki viva.
+Karpathy: o repo é a IDE, o LLM é o programador, a wiki é o código-fonte. A mixagem é o que mantém a wiki viva.
 
 ## As camadas
 
-- **`raw/`** — captura. Fontes como chegaram: conversas, transcrições, recortes, notas, histórico de IA. Material cru, sem ordem. Nunca se apaga nada daqui.
-- **`wiki/`** — memória. Páginas curtas, conectadas, escritas na voz do dono. É o que se lê, consulta e usa pra produzir.
-- **`voz.md`** — o perfil de voz. A memória escreve nesse registro e bebe dele.
+- **`raw/`** — captura. Os samples: conversas, transcrições, recortes, notas, histórico de IA. Material cru, sem ordem. Nunca se apaga nada daqui.
+- **`wiki/`** — memória. Páginas curtas, ligadas, escritas na voz do dono. É o que se lê, consulta e usa pra produzir.
+- **`voz.md`** — a assinatura de voz. A memória escreve nesse registro e bebe dele.
 
 ## Operações
 
-### Atravessar (`raw/` → `wiki/`)
+### Mixar (`raw/` → `wiki/`)
 
-Pra cada fonte em `raw/` ainda não processada:
+Pra cada fonte em `raw/` ainda não mixada:
 
 1. Leia inteiro. Extraia o sinal — a ideia, a decisão, o aprendizado. Descarte o ruído.
 2. Escreva ou atualize a página correspondente em `wiki/`, curta e na voz do dono (consulte `voz.md`). Frontmatter:
@@ -27,7 +27,7 @@ Pra cada fonte em `raw/` ainda não processada:
    ---
    ```
 3. Concentre numa página só o que várias fontes dizem sobre o mesmo conceito.
-4. Conecte com wikilinks (`[[nome-da-pagina]]`). Página sem conexão é sinal de travessia incompleta.
+4. Conecte com wikilinks (`[[nome-da-pagina]]`). Página sem conexão é sinal de mixagem pela metade.
 5. Se a fonte revelou algo sobre como o dono pensa ou escreve, registre em `voz.md`.
 6. Atualize `wiki/index.md` (cada página, uma linha) e `wiki/log.md` (data, o que entrou, o que mudou).
 
@@ -35,7 +35,7 @@ Regra: a memória destila, não copia. Cada página diz o essencial em menos pal
 
 ### Lembrar (consulta)
 
-Responda a partir da `wiki/` primeiro, citando as páginas. Mostre as conexões. Se a wiki não cobre, diga, e aponte o que em `raw/` ainda não foi atravessado e poderia cobrir. Não invente o que a memória não tem.
+Responda a partir da `wiki/` primeiro, citando as páginas. Mostre as conexões. Se a wiki não cobre, diga, e aponte o que em `raw/` ainda não foi mixado e poderia cobrir. Não invente o que a memória não tem.
 
 ### Produzir (artefato)
 
@@ -55,4 +55,4 @@ Quando pedirem, varra a `wiki/` e devolva: contradições, páginas órfãs, con
 
 ---
 
-> Base: ideia de wiki viva de [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). Método da travessia: MSCREATIVE.SYSTEMS™.
+> Base: ideia de wiki viva de [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). Lógica de mixagem: MSCREATIVE.SYSTEMS™.
