@@ -10,7 +10,7 @@ Esta skill leva essa ideia adiante com uma lógica de **estúdio**. A memória a
 
 ## Pra quem é
 
-- **Comunidade MS CREATIVE KEYS** — é um módulo do programa. Seu repo pessoal ganha uma memória que escreve na sua voz.
+- **Comunidade PROMPT ZERO** — é um módulo do programa. Seu repo pessoal ganha uma memória que escreve na sua voz.
 - **Qualquer pessoa** — funciona standalone. Você só precisa de um repositório em markdown. Não exige nenhuma skill interna MSCS; se você tiver (`travessia`, `mscs-wiki`), a memória se integra mais fundo.
 
 ---
@@ -98,8 +98,8 @@ rm -rf ~/.claude/skills/mscs-segundo-cerebro
 ```
 Sua memória fica intacta — isso remove só a skill. `raw/`, `wiki/` e `voz.md` continuam no seu repo.
 
-**Funciona sem ser aluno do KEYS?**
-Sim. A skill é standalone: basta um repositório em markdown. Quem é do KEYS ganha a integração mais funda com as skills internas.
+**Funciona sem ser aluno do PROMPT ZERO?**
+Sim. A skill é standalone: basta um repositório em markdown. Quem é do PROMPT ZERO ganha a integração mais funda com as skills internas.
 
 **Vai continuar atualizado?**
 Sim. `git pull` traz a versão mais nova; o [CHANGELOG](./CHANGELOG.md) registra o que mudou.
@@ -110,11 +110,11 @@ Sim. `git pull` traz a versão mais nova; o [CHANGELOG](./CHANGELOG.md) registra
 
 - **Ideia de wiki viva:** [Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 - **Empacotamento original do AI Second Brain:** [Charlie Hills](https://charliehills.substack.com) — o setup que esta skill adapta
-- **Lógica de mixagem e operação por verbos:** MSCREATIVE.SYSTEMS™ · MS CREATIVE KEYS
+- **Lógica de mixagem e operação por verbos:** MSCREATIVE.SYSTEMS™ · PROMPT ZERO
 
 ## Sobre o autor
 
-Sou Marcel Serrano, criador do MSCREATIVE.SYSTEMS™. Escrevo o [Fronteirista](https://fronteirista.substack.com), onde mostro o que estou construindo com IA enquanto construo — incluindo os erros. Esta skill é um módulo do MS CREATIVE KEYS, programa de 4 semanas que monta seu sistema criativo com IA.
+Sou Marcel Serrano, criador do MSCREATIVE.SYSTEMS™. Escrevo o [Fronteirista](https://fronteirista.substack.com), onde mostro o que estou construindo com IA enquanto construo — incluindo os erros. Esta skill é um módulo do PROMPT ZERO, programa de 4 semanas que monta seu sistema criativo com IA.
 
 ## Licença
 
@@ -122,4 +122,4 @@ MIT — veja [LICENSE](./LICENSE).
 
 ---
 
-*MSCREATIVE.SYSTEMS™ · MS CREATIVE KEYS*
+*MSCREATIVE.SYSTEMS™ · PROMPT ZERO*

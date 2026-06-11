@@ -41,7 +41,7 @@ Voz: frases curtas, voz ativa, zero floreio. Sem "game-changer", "transformador"
 
 ### Pré-requisito
 
-Um repositório pessoal em markdown. Se o usuário é aluno do MSCREATIVE KEYS, esse repo já existe (montado na Semana 2, organizado na Semana 4) — a memória viva entra dentro dele. Se não tem repo ainda, ofereça montar: pasta local + `git init` + repo no GitHub. Use nome sem espaços.
+Um repositório pessoal em markdown. Se o usuário é aluno do PROMPT ZERO, esse repo já existe (montado na Semana 2, organizado na Semana 4) — a memória viva entra dentro dele. Se não tem repo ainda, ofereça montar: pasta local + `git init` + repo no GitHub. Use nome sem espaços.
 
 ### Criar as camadas (o Claude Code faz)
 
@@ -126,4 +126,4 @@ Quem quiser falar com a memória pelo telefone pode ligar o iMessage Channels do
 >
 > A lógica de estúdio — captura → mixagem (ligar + destilar + calibrar na voz) → produção — e a operação por verbos são da MSCREATIVE.SYSTEMS™.
 >
-> MSCREATIVE.SYSTEMS™ · MS CREATIVE KEYS
+> MSCREATIVE.SYSTEMS™ · PROMPT ZERO
