@@ -47,7 +47,7 @@ A voz é a assinatura. A cada mixagem o sistema aprende como você pensa e escre
 ## Instalar
 
 ```bash
-git clone https://github.com/1marcelserrano/mscs-segundo-cerebro.git ~/.claude/skills/mscs-segundo-cerebro
+git clone https://github.com/1marcelserrano/mscs-segundo-cerebro-publico.git ~/.claude/skills/mscs-segundo-cerebro
 ```
 
 Se a pasta já existir, faça backup antes (`mv ... .backup`). Abra o Claude Code dentro do seu repositório e diga:
