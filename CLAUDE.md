@@ -45,6 +45,20 @@ Puxe da `wiki/` o que toca o tema. Use o que é do dono, não conhecimento gené
 
 Quando pedirem, varra a `wiki/` e devolva: contradições, páginas órfãs, conceitos sem página própria, páginas inchadas, páginas duplicadas. Proponha os ajustes. Só execute depois de aprovado.
 
+### Captura de referências externas (padrão)
+
+Toda referência externa de conhecimento — tweet, thread, artigo, vídeo, talk, podcast, trecho de livro — vira nota estruturada em `raw/` e é mixada na hora pra `wiki/`.
+
+**Gatilhos naturais:** "manda isso pro Obsidian", "joga no Obsidian", "salva no Obsidian", "captura isso". O "isso" é a referência externa mais recente da conversa. O verbo explícito é `/capturar-ref`.
+
+**Sugestão proativa:** quando uma referência externa de peso aparece na conversa e eu não pedi pra capturar, ofereça — "quer que eu capture isso pro segundo cérebro?". Não capture sem aval.
+
+**Fluxo:**
+
+1. Crie `raw/AAAA-MM-DD_<slug>.md` a partir de `templates/captura_referencia.md`, com os 8 campos: fonte/autor/data; formato + tags; resumo; insights-chave; quote bruto; conexão com curso/sistema; ideia de aplicação pro MSCS; ideia de conteúdo adaptado. Campo sem matéria-prima = "—".
+2. Quote bruto: verbatim. Não reescreva a fonte.
+3. Mixe na hora: crie ou atualize a página em `wiki/` na minha voz, com pelo menos um wikilink. Atualize `wiki/index.md` e `wiki/log.md`. Marque a nota de `raw/` como `status: mixado`.
+
 ## Regras de escrita
 
 - Português. Frases curtas. Voz ativa.

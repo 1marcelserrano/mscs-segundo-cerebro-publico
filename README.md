@@ -34,13 +34,14 @@ A voz é a assinatura. A cada mixagem o sistema aprende como você pensa e escre
 
 ---
 
-## Os três verbos
+## Os verbos
 
 | Comando | O que faz |
 |---|---|
 | `/mixar [tema]` | Liga o bruto novo de `raw/` ao que já existe, destila pra `wiki/` e atualiza `voz.md` |
 | `/lembrar [tema]` | Vasculha a memória: o que você já sabe e já disse, com as conexões |
 | `/produzir [tema]` | Gera a faixa: um artefato na sua voz, puxando da memória |
+| `/capturar-ref [ref]` | Captura uma referência externa (tweet, artigo, vídeo, talk) em `raw/` e mixa na hora pra `wiki/` |
 
 ---
 
@@ -70,6 +71,7 @@ A skill acorda quando você diz, dentro do Claude Code:
 - "Exportei meu ChatGPT e agora?"
 - "Quero um sistema que escreve na minha voz."
 - "O que eu já disse sobre esse tema?"
+- "Manda isso pro Obsidian." / "Captura isso."
 
 ---
 
@@ -81,6 +83,7 @@ seu-repo/
 ├── wiki/         ← memória: ligada, destilada, na sua voz
 │   ├── index.md
 │   └── log.md
+├── templates/    ← moldes de captura (ex.: referência externa)
 ├── voz.md        ← assinatura de voz, cresce a cada mixagem
 └── CLAUDE.md     ← protocolo da memória viva
 ```
