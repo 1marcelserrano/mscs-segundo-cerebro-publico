@@ -83,7 +83,7 @@ cp ~/.claude/skills/mscs-segundo-cerebro/templates/*.md ./templates/
 - **`/mixar`** — o verbo central. Pega o que está em `raw/` ainda não mixado, liga cada fonte ao que já existe, destila pra `wiki/`, e atualiza `voz.md`. Aceita um tema ou arquivo pra mixar só aquilo. É a mixagem: bruto vira memória ligada.
 - **`/lembrar [tema]`** — vasculha a memória. O que você já sabe e já disse sobre um tema, com as conexões. Responde da `wiki/` primeiro; se não cobre, aponta o que falta mixar.
 - **`/produzir [tema]`** — gera a faixa: um artefato na sua voz, puxando da `wiki/` e do `voz.md`. Marca onde a memória ainda é rasa.
-- **`/capturar-ref [ref]`** — captura uma referência externa (tweet, thread, artigo, vídeo, talk, podcast, trecho de livro) em `raw/` a partir do molde `templates/captura_referencia.md` e mixa na hora pra `wiki/`. Dispara também por gatilho natural ("manda isso pro Obsidian", "captura isso").
+- **`/capturar-ref [ref]`** — captura uma referência externa (tweet, thread, artigo, vídeo, talk, podcast, trecho de livro) em `raw/` a partir do molde `templates/captura_referencia.md`, mixa na hora pra `wiki/` e entrega um **prompt de handoff**: a melhor ideia que sai da referência vira um prompt pronto pra colar num Claude Code que implementa aquilo. Dispara também por gatilho natural ("manda isso pro Obsidian", "captura isso").
 
 O fluxo do dia a dia: você captura em `raw/` quando algo aparece. Roda `/mixar` quando quiser que entre na memória. Roda `/lembrar` antes de começar algo. Roda `/produzir` quando for criar.
 

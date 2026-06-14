@@ -32,3 +32,10 @@ status: cru
 
 ## Ideia de conteúdo adaptado
 <que post, e-mail, roteiro ou aula nasce daqui. Na minha voz.>
+
+## Prompt de handoff
+<prompt pronto pra colar num Claude Code que implementa a melhor ideia acima (aplicação ou conteúdo). Concreto, na minha voz, com o arquivo/caminho alvo quando souber. É a entrega que tira a ideia do papel. Sem ideia acionável = "—".>
+
+```
+<o prompt em si, pronto pra copiar>
+```
