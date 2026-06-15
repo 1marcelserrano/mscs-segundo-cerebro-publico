@@ -1,0 +1,125 @@
+{
+  "name": "mixar-noturno — brief de sintese (segundo cerebro)",
+  "meta": {
+    "_comment": "ESQUELETO. Nao testado. Importar no n8n, preencher os TODO (paths, API key, chat_id) e ativar. Spec: automacao/mixar-agendado.md"
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo"
+  },
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            { "field": "cronExpression", "expression": "0 5 * * *" }
+          ]
+        }
+      },
+      "id": "trigger-cron",
+      "name": "05:00 todo dia",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /TODO/path/para/mscs-segundo-cerebro && git pull --quiet origin main"
+      },
+      "id": "git-pull",
+      "name": "git pull (sincroniza vault)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /TODO/path/para/mscs-segundo-cerebro && { echo '### RAW_NOVO'; find raw -name '*.md' -type f -mtime -1; echo '### WIKI'; cat wiki/*.md; echo '### VOZ'; cat voz.md; }"
+      },
+      "id": "read-context",
+      "name": "le raw<24h + wiki + voz",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [440, 300],
+      "notes": "Saida vai em json.stdout. Em producao, separe raw novo de wiki em campos distintos (Code node) pra montar o prompt limpo."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "anthropic-version", "value": "2023-06-01" },
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"claude-sonnet-4-6\",\n  \"max_tokens\": 1500,\n  \"system\": \"Voce e a Memoria Viva. Escreva no registro do voz.md. Sintese, nao resumo: nao condense o vault, cruze o vault. Seçao sem materia-prima real = '—'. Nao invente sinal.\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Devolva um brief de 4 seçoes (2-4 linhas cada) na voz do voz.md:\\n1) Conexoes nao-obvias — capturas novas que tocam paginas antigas; cite as duas pontas.\\n2) Padrao se formando — tema em >=3 fontes pedindo pagina propria.\\n3) Contradiçao — so conflito: tese da wiki vs fonte nova; a evidencia que ataca.\\n4) Melhor captura pra desenvolver — uma so, com o porque.\\n\\nMATERIAL:\\n\" + $json.stdout\n    }\n  ]\n}"
+      },
+      "id": "anthropic",
+      "name": "Anthropic — gera brief",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "TODO",
+          "name": "Anthropic API key (header x-api-key)"
+        }
+      },
+      "notes": "Credencial httpHeaderAuth: Name = x-api-key, Value = sk-ant-... (TODO criar no n8n)"
+    },
+    {
+      "parameters": {
+        "command": "=cd /TODO/path/para/mscs-segundo-cerebro && D=$(date +%F) && mkdir -p briefs && printf '---\\ndata: %s\\nfontes: brief automatico\\n---\\n\\n# Brief %s\\n\\n%s\\n' \"$D\" \"$D\" {{ JSON.stringify($json.content[0].text) }} > briefs/$D.md && git add briefs/$D.md && git commit -q -m \"brief: sintese noturna $D\" && git push -q origin main"
+      },
+      "id": "write-commit",
+      "name": "escreve briefs/ + commit + push",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [880, 300],
+      "notes": "Producao: prefira escrever o arquivo via Write File node e fazer o commit a parte, pra escapar de aspas. Aqui e skeleton."
+    },
+    {
+      "parameters": {
+        "chatId": "TODO_CHAT_ID",
+        "text": "={{ $json.content[0].text }}",
+        "additionalFields": {}
+      },
+      "id": "telegram",
+      "name": "Telegram (opcional)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [880, 480],
+      "credentials": {
+        "telegramApi": {
+          "id": "TODO",
+          "name": "Bot do BotFather (TODO)"
+        }
+      },
+      "notes": "Opcional. Entrega o brief no celular antes de abrir o laptop. Liga a saida do node Anthropic aqui em paralelo ao write-commit."
+    }
+  ],
+  "connections": {
+    "05:00 todo dia": {
+      "main": [[{ "node": "git pull (sincroniza vault)", "type": "main", "index": 0 }]]
+    },
+    "git pull (sincroniza vault)": {
+      "main": [[{ "node": "le raw<24h + wiki + voz", "type": "main", "index": 0 }]]
+    },
+    "le raw<24h + wiki + voz": {
+      "main": [[{ "node": "Anthropic — gera brief", "type": "main", "index": 0 }]]
+    },
+    "Anthropic — gera brief": {
+      "main": [[
+        { "node": "escreve briefs/ + commit + push", "type": "main", "index": 0 },
+        { "node": "Telegram (opcional)", "type": "main", "index": 0 }
+      ]]
+    }
+  }
+}
