@@ -14,16 +14,17 @@ Tweet de Andrej Karpathy, 24 jan 2023 — *"The hottest new programming language
 
 | Item | Status |
 |---|---|
-| 8 campos preenchidos sem encher linguiça (campo sem matéria = "—") | ✅ |
+| 9 campos preenchidos sem encher linguiça (campo sem matéria = "—") | ✅ |
 | Quote bruto preservado verbatim, não reescrito | ✅ |
 | Wikilink criado e página de `wiki/` na voz do dono | ✅ |
 | Nota de `raw/` marcada `status: mixado` | ✅ |
 | `wiki/index.md` e `wiki/log.md` atualizados | ✅ |
+| Prompt de handoff concreto, na voz do dono, com arquivo-alvo | ✅ |
 
 ## Resumo (3 linhas)
 
-- **Entrou:** o tweet do Karpathy "the hottest new programming language is English" como nota estruturada de 8 campos.
+- **Entrou:** o tweet do Karpathy "the hottest new programming language is English" como nota estruturada de 9 campos.
 - **Ligou:** criou `wiki/ingles-como-linguagem-de-programacao` com wikilink pra `index`/memória viva — prompt como código, o LLM compila linguagem natural.
-- **Melhor ideia:** abrir a primeira aula do PROMPT ZERO com o tweet; e o post no Fronteirista "A linguagem de programação mais quente é o português".
+- **Melhor ideia:** abrir a primeira aula do PROMPT ZERO com o tweet — e o handoff já saiu como prompt pronto pra colar num Claude Code no repo do curso, que reescreve a abertura da aula 1.
 
-**Veredito: eval verde.** Padrão pronto pra propagar a cada install.
+**Veredito: eval verde.** Padrão (captura + mixagem + handoff) pronto pra propagar a cada install.
